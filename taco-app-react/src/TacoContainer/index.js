@@ -3,7 +3,7 @@ import Tacos from '../Tacos';
 import CreateTaco from '../CreateTaco';
 import EditTaco from '../EditTaco';
 
-// CHANGE THE WORD TITLE
+
 
 class TacoContainer extends Component {
   constructor(){
@@ -13,9 +13,8 @@ class TacoContainer extends Component {
       showEdit: false,
       editTacoId: null,
       tacoToEdit: {
-        title: '',
-        description: ''
-
+        name: '',
+        restaurant: ''
       }
     }
   }
@@ -77,12 +76,12 @@ class TacoContainer extends Component {
   }
 
   showModal = (id) => {
-    const tacoToEdit = this.state.tacos.find((movie) => movie._id === id)
+    const tacoToEdit = this.state.tacos.find((taco) => taco._id === id)
     this.setState({
       showEdit: true,
       editTacoId: id,
-        title: tacoToEdit.title,
-        description: tacoToEdit.description
+        name: tacoToEdit.name,
+        restaurant: tacoToEdit.restaurant
       }
     });
   }
@@ -105,14 +104,14 @@ class TacoContainer extends Component {
         const editedTacoArray = this.state.tacos.map((tacos) => {
           if(taco._id === this.state.editTacoId){
             console.log('found it! editing: ', taco)
-            taco.title = parsedResponse.data.title
-            movie.description = parsedResponse.data.description
+            taco.name = parsedResponse.data.name
+            taco.restaurant = parsedResponse.data.restaurant
           }
           return taco
         });
 
         this.setState({
-          movie.editedTacoArray,
+          taco.editedTacoArray,
           showEdit: false
         })
       } catch(err) {
