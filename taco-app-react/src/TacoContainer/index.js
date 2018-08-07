@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Tacos from '../Tacos';
 import CreateTaco from '../CreateTaco';
 import EditTaco from '../EditTaco';
+import {Route, Switch} from 'react-router-dom';
 
 
 
@@ -80,6 +81,7 @@ class TacoContainer extends Component {
     this.setState({
       showEdit: true,
       editTacoId: id,
+      tacoToEdit: {
         name: tacoToEdit.name,
         restaurant: tacoToEdit.restaurant
       }
@@ -88,6 +90,7 @@ class TacoContainer extends Component {
 
 
   closeAndEdit = async (e) => {
+    const taco = taco._id
     e.preventDefault();
     console.log('close and edit')
       try {
@@ -111,7 +114,7 @@ class TacoContainer extends Component {
         });
 
         this.setState({
-          taco.editedTacoArray,
+          tacos: editedTacoArray,
           showEdit: false
         })
       } catch(err) {

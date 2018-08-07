@@ -14,7 +14,7 @@ const My404 = () => {
   )
 }
 
-const App = () = > {
+const App = () => {
     return (
       <main>
         <Header />
@@ -25,8 +25,9 @@ const App = () = > {
         </Switch>
       </main>
     );
-  }
 }
-}
+
+
+
 
 export default App;
