@@ -22,7 +22,7 @@ class Login extends Component{
       }
     });
 
-  const parsedRespone = await loginResponse.json();
+  const parsedResponse = await loginResponse.json();
 
   if(parsedResponse.data = 'login successful'){
     this.props.history.push('/tacos');
@@ -47,6 +47,7 @@ class Login extends Component{
           <input type='password' name='password' onChange={this.handleChange}/>
         </label>
         <input type='submit' value='Login'/>
+      </form>
       )
   }
 
