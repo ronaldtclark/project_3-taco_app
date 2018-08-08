@@ -1,20 +1,20 @@
 import React from 'react';
 
 const Tacos = (props) => {
-  if(typeof taco !== 'undefined'){
-    let tacoList = props.tacos.map((taco, i) => {
+  console.log(props, " this is props in Tacos component")
+  // this is now your 
+  
+   const tacoList = props.tacos.map((taco, i) => {
       return (
         <li key={taco._id}>
           <span>{taco.name}</span>
           <small>{taco.restaurant}</small>
-          <button onClick={props.deleteTaco.bind(null, taco._id)}>Delete</button>
-          <button onClick={props.showModal.bind(null, taco._id, i)}>Edit</button>
+          <button onClick={props.upVote.bind(null, taco._id)}>Upvote</button>
+          <button onClick={props.downVote.bind(null, taco._id, i)}>Downvote</button>
         </li>
       )
     });
-  } else {
-    let tacoList = <li>No Tacos Found</li>
-  }
+  
 
   return(
     <ul>

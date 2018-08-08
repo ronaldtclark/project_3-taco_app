@@ -10,7 +10,8 @@ class TacoContainer extends Component {
   constructor(){
     super();
     this.state = {
-      taco: [],
+      taco: '',
+      tacos: [],
       showEdit: false,
       editTacoId: null,
       tacoToEdit: {
@@ -37,8 +38,8 @@ class TacoContainer extends Component {
       credentials: 'include',
       method: 'GET'
     });
-    const parsedTacos = tacos.json();
-
+    const parsedTacos = await tacos.json();
+    console.log(parsedTacos);
     return parsedTacos
   }
 
@@ -130,13 +131,32 @@ class TacoContainer extends Component {
   }
 
 
+  upVote = (tacoId, e) => {
+    console.log( "upvote has been clicked")
+    fetch('http://localhost:9000/tacos/' + tacoId + '/upvote', { 
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  }
+
+
+  downVote = (e) => {
+
+  }
+
+
   render(){
+    console.log(this.state)
     return(
       <div>
         <Tacos
           tacos={this.state.tacos}
           deleteTaco={this.deleteTaco}
           showModal={this.showModal}
+          upVote={this.upVote}
+          downVote={this.downVote}
         />
 
         <CreateTaco addTaco={this.addTaco} />
@@ -160,10 +180,6 @@ class TacoContainer extends Component {
 
 
 export default TacoContainer;
-
-
-
-
 
 
 
