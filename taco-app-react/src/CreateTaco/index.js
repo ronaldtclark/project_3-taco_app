@@ -5,7 +5,8 @@ class CreateTaco extends Component {
     super();
     this.state = {
       name: '',
-      restaurant: ''
+      restaurant: '',
+      comments: ['']
     }
   }
   updateTaco = (e) => {
