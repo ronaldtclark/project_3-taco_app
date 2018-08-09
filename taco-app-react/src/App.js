@@ -5,7 +5,8 @@ import TacoContainer from './TacoContainer';
 import Login from './Login';
 import {Route, Switch} from 'react-router-dom';
 import Header from './Header';
-import Leaderboard from './Leaderboard'
+// import Leaderboard from './Leaderboard'
+import Search from './Search'
 
 const My404 = () => {
   return (
@@ -19,10 +20,8 @@ const App = () => {
     return (
       <main>
         <Header />
-        <Leaderboard
-    name={taco.name}
-    restaurant={taco.restaurant}
-  />
+    
+        <Search />
         <Switch>
           <Route exact path='/' component={Login} />
           <Route exact path='/tacos' component={TacoContainer} />

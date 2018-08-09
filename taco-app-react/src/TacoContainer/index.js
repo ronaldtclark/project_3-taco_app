@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Tacos from '../Tacos';
 import CreateTaco from '../CreateTaco';
 import EditTaco from '../EditTaco';
+import {Route, Switch} from 'react-router-dom';
 
 
 
@@ -89,6 +90,7 @@ class TacoContainer extends Component {
 
 
   closeAndEdit = async (e) => {
+    // const taco = taco._id
     e.preventDefault();
     const taco = taco._id //********************************//
     console.log('close and edit')
