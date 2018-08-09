@@ -10,7 +10,8 @@ class TacoContainer extends Component {
   constructor(){
     super();
     this.state = {
-      taco: [],
+      taco: '',
+      tacos: [],
       showEdit: false,
       editTacoId: null,
       tacoToEdit: {
@@ -37,8 +38,8 @@ class TacoContainer extends Component {
       credentials: 'include',
       method: 'GET'
     });
-    const parsedTacos = tacos.json();
-
+    const parsedTacos = await tacos.json();
+    console.log(parsedTacos);
     return parsedTacos
   }
 
@@ -75,6 +76,7 @@ class TacoContainer extends Component {
       console.log(err);
     }
   }
+
 
   showModal = (id) => {
     const tacoToEdit = this.state.tacos.find((taco) => taco._id === id)
@@ -131,13 +133,47 @@ class TacoContainer extends Component {
   }
 
 
+  upVote = (taco, e) => {
+    console.log("upvote has been clicked on " + taco._id)
+    fetch('http://localhost:9000/tacos/' + taco._id + '/upvote', { 
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    // update state to reflect the change
+    // const upVotedTaco = this.state.tacos
+    // .setState(state);
+  }
+
+    // constructor()
+    // super();
+    // this.state = {
+    //   rating: 0
+    // }
+
+
+  downVote = (tacoId, e) => {
+    console.log("downvote has been clicked on " + tacoId)
+    fetch('http://localhost:9000/tacos/' + tacoId + '/downvote', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+
   render(){
+    console.log(this.state)
     return(
       <div>
         <Tacos
           tacos={this.state.tacos}
           deleteTaco={this.deleteTaco}
           showModal={this.showModal}
+          upVote={this.upVote}
+          downVote={this.downVote}
         />
 
         <CreateTaco addTaco={this.addTaco} />
@@ -161,10 +197,6 @@ class TacoContainer extends Component {
 
 
 export default TacoContainer;
-
-
-
-
 
 
 

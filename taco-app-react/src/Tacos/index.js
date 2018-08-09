@@ -1,21 +1,23 @@
 import React from 'react';
 
 const Tacos = (props) => {
-  let tacoList;
-  if(typeof taco !== 'undefined'){
-     tacoList = props.tacos.map((taco, i) => {
+  console.log(props, " this is props in Tacos component")
+  
+   const tacoList = props.tacos.map((taco, i) => {
+    console.log()
+
       return (
-        <li key={taco._id}>
-          <span>{taco.name}</span>
-          <small>{taco.restaurant}</small>
-          <button onClick={props.deleteTaco.bind(null, taco._id)}>Delete</button>
-          <button onClick={props.showModal.bind(null, taco._id, i)}>Edit</button>
-        </li>
+        <div id="leaderboard">
+          <li key={taco._id}>
+            <span>{taco.rating}</span>
+            <span>{taco.name}</span>
+            <small>{taco.restaurant}</small>
+            <button onClick={props.upVote.bind(null, taco._id)}>Upvote</button>
+            <button onClick={props.downVote.bind(null, taco._id)}>Downvote</button>
+          </li>
+        </div>
       )
     });
-  } else {
-     tacoList = <li>No Tacos Found</li>
-  }
 
   return(
     <ul>
@@ -25,3 +27,5 @@ const Tacos = (props) => {
 }
 
 export default Tacos;
+
+// <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
