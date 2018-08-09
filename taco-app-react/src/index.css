@@ -1,11 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  /*font-family: 'Cabin Sketch', cursive;*/
+  font-family: 'Cabin Sketch', cursive;
   text-align: center;
- /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center;*/
+  align-items: center;
   background-image: url("https://www.seemexico.com/wp-content/uploads/2016/11/Shrimp-tacos-with-homemade-salsa-limes-and-parsley-on-wooden-board-over-dark-background-e1478165379741.jpg");
   background-size: cover;
 }
@@ -16,6 +16,17 @@ ul {
 
 #leaderboard, label {
   color: white;
+}
+
+/*#tacoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+li{
+  display: flex;
+  justify-content: space-evenly;
 }
 
 

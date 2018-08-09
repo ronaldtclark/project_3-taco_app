@@ -47,7 +47,7 @@ class TacoContainer extends Component {
   addTaco = async (taco, e) => {
     e.preventDefault();
     try {
-      const createTaco = await fetch('http://localhost:9000/tacos', { // Might need to be createdTaco
+      const createTaco = await fetch('http://localhost:9000/tacos', { 
         method: 'POST',
         body: JSON.stringify(taco),
         headers: {
@@ -55,7 +55,7 @@ class TacoContainer extends Component {
         }
       });
 
-      const parsedResponse = await createTaco.json(); // createdTaco?
+      const parsedResponse = await createTaco.json(); 
       this.setState({tacos: [...this.state.tacos, parsedResponse.data]})
     } catch(err) {
       console.log(err);
@@ -92,7 +92,6 @@ class TacoContainer extends Component {
 
 
   closeAndEdit = async (e) => {
-    // const taco = taco._id
     e.preventDefault();
     const taco = taco._id //********************************//
     console.log('close and edit')
@@ -133,17 +132,23 @@ class TacoContainer extends Component {
   }
 
 
-  upVote = (taco, e) => {
+  upVote = async (taco, e) => {
     console.log("upvote has been clicked on " + taco._id)
-    fetch('http://localhost:9000/tacos/' + taco._id + '/upvote', { 
+    const upVotedTaco = await fetch('http://localhost:9000/tacos/' + taco._id + '/upvote', { 
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       }
     });
+    console.log(upVotedTaco)
+    const parsedTaco = await upVotedTaco.json()
+    console.log(parsedTaco)
+    console.log(this.state.tacos)
+    this.setState({tacos: parsedTaco})
+    // this.state.tacos.splice()
     // update state to reflect the change
     // const upVotedTaco = this.state.tacos
-    // .setState(state);
+    // this.setState(tacos.);
   }
 
     // constructor()
@@ -153,21 +158,25 @@ class TacoContainer extends Component {
     // }
 
 
-  downVote = (tacoId, e) => {
+  downVote = async (tacoId, e) => {
     console.log("downvote has been clicked on " + tacoId)
-    fetch('http://localhost:9000/tacos/' + tacoId + '/downvote', {
+    const downVotedTaco = await fetch('http://localhost:9000/tacos/' + tacoId + '/downvote', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       }
     });
+    const parsedTaco = await downVotedTaco.json()
+    this.setState({tacos: parsedTaco})
   }
 
 
   render(){
     console.log(this.state)
     return(
-      <div>
+      <div id="tacoContainer">
+        <CreateTaco addTaco={this.addTaco} />
+
         <Tacos
           tacos={this.state.tacos}
           deleteTaco={this.deleteTaco}
@@ -176,7 +185,6 @@ class TacoContainer extends Component {
           downVote={this.downVote}
         />
 
-        <CreateTaco addTaco={this.addTaco} />
 
         {
           this.state.showEdit
