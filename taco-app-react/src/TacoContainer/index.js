@@ -92,8 +92,9 @@ class TacoContainer extends Component {
 
 
   closeAndEdit = async (e) => {
-    const taco = taco._id
+    // const taco = taco._id
     e.preventDefault();
+    const taco = taco._id //********************************//
     console.log('close and edit')
       try {
         const editTaco = await fetch('http://localhost:9000/tacos' + this.state.editTacoId, {
@@ -116,7 +117,7 @@ class TacoContainer extends Component {
         });
 
         this.setState({
-          tacos: editedTacoArray,
+          taco: editedTacoArray,
           showEdit: false
         })
       } catch(err) {
