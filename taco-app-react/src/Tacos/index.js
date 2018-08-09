@@ -2,20 +2,22 @@ import React from 'react';
 
 const Tacos = (props) => {
   console.log(props, " this is props in Tacos component")
-  // this is now your 
   
    const tacoList = props.tacos.map((taco, i) => {
+    console.log()
       return (
-        <li key={taco._id}>
-          <span>{taco.name}</span>
-          <small>{taco.restaurant}</small>
-          <button onClick={props.upVote.bind(null, taco._id)}>Upvote</button>
-          <button onClick={props.downVote.bind(null, taco._id, i)}>Downvote</button>
-        </li>
+        <div id="leaderboard">
+          <li key={taco._id}>
+            <span>{taco.rating}</span>
+            <span>{taco.name}</span>
+            <small>{taco.restaurant}</small>
+            <button onClick={props.upVote.bind(null, taco._id)}>Upvote</button>
+            <button onClick={props.downVote.bind(null, taco._id)}>Downvote</button>
+          </li>
+        </div>
       )
     });
   
-
   return(
     <ul>
       {tacoList}
@@ -24,3 +26,5 @@ const Tacos = (props) => {
 }
 
 export default Tacos;
+
+// <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">

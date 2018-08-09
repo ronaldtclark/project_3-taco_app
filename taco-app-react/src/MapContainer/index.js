@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 
+// Link to individual taco page. Chicago Taco Database, CTDB
+
 class MapContainer extends Component {
   constructor(){
     super();

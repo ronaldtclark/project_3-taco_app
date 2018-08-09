@@ -77,6 +77,7 @@ class TacoContainer extends Component {
     }
   }
 
+
   showModal = (id) => {
     const tacoToEdit = this.state.tacos.find((taco) => taco._id === id)
     this.setState({
@@ -131,19 +132,34 @@ class TacoContainer extends Component {
   }
 
 
-  upVote = (tacoId, e) => {
-    console.log( "upvote has been clicked")
-    fetch('http://localhost:9000/tacos/' + tacoId + '/upvote', { 
+  upVote = (taco, e) => {
+    console.log("upvote has been clicked on " + taco._id)
+    fetch('http://localhost:9000/tacos/' + taco._id + '/upvote', { 
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    });
+    // update state to reflect the change
+    // const upVotedTaco = this.state.tacos
+    // .setState(state);
   }
 
+    // constructor()
+    // super();
+    // this.state = {
+    //   rating: 0
+    // }
 
-  downVote = (e) => {
 
+  downVote = (tacoId, e) => {
+    console.log("downvote has been clicked on " + tacoId)
+    fetch('http://localhost:9000/tacos/' + tacoId + '/downvote', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   }
 
 
