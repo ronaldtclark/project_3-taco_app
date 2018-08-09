@@ -11,8 +11,8 @@ const Tacos = (props) => {
             <span>{taco.rating}</span>
             <span>{taco.name}</span>
             <small>{taco.restaurant}</small>
-            <button onClick={props.upVote.bind(null, taco._id)}>Upvote</button>
-            <button onClick={props.downVote.bind(null, taco._id)}>Downvote</button>
+            <button onClick={props.upVote.bind(null, taco._id, i)}>Upvote</button>
+            <button onClick={props.downVote.bind(null, taco._id, i)}>Downvote</button>
           </li>
         </div>
       )
