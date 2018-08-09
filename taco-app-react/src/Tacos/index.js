@@ -9,10 +9,10 @@ const Tacos = (props) => {
       return (
         <div id="leaderboard">
           <li key={taco._id}>
-            <span>{taco.rating}</span>
             <span>{taco.name}</span>
-            <small>{taco.restaurant}</small>
+            <span>{taco.restaurant}</span>
             <button onClick={props.upVote.bind(null, taco._id)}>Upvote</button>
+            <span>{taco.rating}</span>
             <button onClick={props.downVote.bind(null, taco._id)}>Downvote</button>
           </li>
         </div>
