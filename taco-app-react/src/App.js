@@ -22,6 +22,7 @@ const My404 = () => {
 const App = () => {
     return (
       <main>
+      <h1>CTDB: Chicago Taco Database</h1>
         <Header />
     
        
