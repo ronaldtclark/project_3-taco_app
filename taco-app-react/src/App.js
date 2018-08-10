@@ -22,11 +22,13 @@ const App = () => {
         <Header />
     
         <Search />
+        
         <Switch>
           <Route exact path='/' component={Login} />
           <Route exact path='/tacos' component={TacoContainer} />
           <Route component={My404} />
         </Switch>
+        
       </main>
     );
   }

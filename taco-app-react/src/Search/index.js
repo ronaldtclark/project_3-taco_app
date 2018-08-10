@@ -8,7 +8,6 @@ class Search extends Component {
     super()
     this.state = {
       restaurant: '',
-      rating: 0,
       searchResults: []
     }
   }
@@ -18,14 +17,13 @@ class Search extends Component {
     try {
       const searchResponse = await fetch ("http://localhost:9000/tacos/search/" + this.state.restaurant, {
         method: 'GET',
-        headers: {
-          'Authorization': 'Bearer gr0amugCLWzgKkSCIgPZnPI8e7cRXFuEprIOGszYzUIo9JH5kWT1LMMZUkIW0tOBpywUrjmxns-zKDh5FoGsj4_SPNZG_-WDeGAzOCESd0wG9ZX5tUOXIRo4H2poW3Yx'
-        }
       }) 
       const parsedResponse = await searchResponse.json()
 
-      console.log(parsedResponse) 
-      // add data to state
+      console.log(parsedResponse.businesses)
+      this.setState({
+        searchResults: parsedResponse.businesses
+      })
 
     } catch (err) {
       console.log(err)
@@ -38,15 +36,23 @@ class Search extends Component {
     })
   }
 
-  render() {
+  render(){
+    console.log(this.state)
     // createa a variable of JSX by mapping over the data in state and render below 
-
+      const restaurantList = this.state.searchResults.map((business, i) => {
+        console.log(business.name)
+        return(
+          <h1>{business.name}</h1>
+        )
+      })
     return(
       <div>
         
           <input onChange={this.handleChange} type="search" value={this.state.restaurant} placeholder="Restaurant Name" />
           <button onClick={this.handleSubmit}>Search</button>
-
+          <ul>
+            <li>{restaurantList.name}</li>
+          </ul>
         
       </div>
       )

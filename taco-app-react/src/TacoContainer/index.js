@@ -92,7 +92,6 @@ class TacoContainer extends Component {
 
 
   closeAndEdit = async (e) => {
-    // const taco = taco._id
     e.preventDefault();
     const taco = taco._id //********************************//
     console.log('close and edit')
@@ -143,7 +142,7 @@ class TacoContainer extends Component {
     });
     // update state to reflect the change
     // const upVotedTaco = this.state.tacos
-    // .setState(state);
+    // .setState(state)
   }
 
     // constructor()
@@ -167,29 +166,20 @@ class TacoContainer extends Component {
   render(){
     console.log(this.state)
     return(
+      
       <div>
+        
+      
+
         <Tacos
           tacos={this.state.tacos}
-          deleteTaco={this.deleteTaco}
-          showModal={this.showModal}
           upVote={this.upVote}
           downVote={this.downVote}
         />
 
         <CreateTaco addTaco={this.addTaco} />
 
-        {
-          this.state.showEdit
-          ?
-          <EditTaco
-            handleFormChange={this.handleFormChange}
-            tacoToEdit={this.state.tacoToEdit}
-            closeAndEdit={this.closeAndEdit}
-          />
-          :
-          null
-        }
-        </div>
+      </div>
     )
   }
 }
