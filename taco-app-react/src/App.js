@@ -25,9 +25,6 @@ const App = () => {
       <h1>CTDB: Chicago Taco Database</h1>
         <Header />
     
-       
-       
-
         <Switch>
           <Route exact path='/' component={Login} />
           <Route exact path='/tacos' component={TacoContainer} />
