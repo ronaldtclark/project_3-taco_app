@@ -62,7 +62,6 @@ span {
 li{
   display: flex;
   justify-content: space-evenly;
-  background-color: black;
 }
 
 ul {
@@ -87,16 +86,25 @@ header a {
 }
 
 h1 {
-  margin: 30px 0 10px 0;
+  margin: 30px 0px 10px 0px;
   padding: 0;
   font-family: 'Cabin Sketch', cursive;
+  color: white;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   font-size: 48px;
 }
 
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.create {
+  padding: 0px 10px 0px 10px;
+}
 
 /*https://i.pinimg.com/originals/bf/0b/b9/bf0bb9f7716c4707c39393503ce005f6.jpg*/

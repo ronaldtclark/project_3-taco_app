@@ -14,24 +14,25 @@ class CreateTaco extends Component {
   }
 
   
-  
+
   render(){
     return(
       <form onSubmit={this.props.addTaco.bind(this, this.state)}>
         <span>
           <label>
             Taco:
-            <input type="text" name="name" onChange={this.updateTaco}/>
+            <input class="create" type="text" name="name" onChange={this.updateTaco}/>
           </label>
         </span>
         <span>
           <label>
             Restaurant:
-            <input type="text" name="restaurant" onChange={this.updateTaco}/>
+            <input class="create" type="text" name="restaurant" onChange={this.updateTaco}/>
           </label>
           <input type='Submit'/>
         </span>
       </form>
+      
     )
   }
 }
