@@ -147,19 +147,7 @@ class TacoContainer extends Component {
     console.log(parsedTaco)
     console.log(this.state.tacos)
     this.setState({tacos: parsedTaco})
-    // this.state.tacos.splice()
-    // update state to reflect the change
-    // const upVotedTaco = this.state.tacos
-
-    // this.setState(tacos.);
-
   }
-
-    // constructor()
-    // super();
-    // this.state = {
-    //   rating: 0
-    // }
 
 
   downVote = async (tacoId, e) => {
