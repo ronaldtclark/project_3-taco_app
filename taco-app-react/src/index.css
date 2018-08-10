@@ -10,30 +10,75 @@ body {
   background-size: cover;
 }
 
-ul {
-  list-style-type: none;
-}
-
-#leaderboard, label {
+#login {
   color: white;
-  background-color: black;
-  padding: 5px;
-  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+span {
+  padding: 0px 10px 0px 10px;
+}
+
+#leaderboard {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+#tacoContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/*#tacoContainer {
+#addTaco {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-}*/
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+#restSearch {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  
+}
 
 li{
   display: flex;
   justify-content: space-evenly;
   background-color: black;
+}
+
+header li{
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
 }
 
 

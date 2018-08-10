@@ -1,4 +1,8 @@
 import React, {Component} from 'react'
+import CreateTaco from '../CreateTaco'
+import TacoContainer from '../TacoContainer'
+import '../index.css'
+
 
 
 
@@ -8,7 +12,9 @@ class Search extends Component {
     super()
     this.state = {
       restaurant: '',
-      searchResults: []
+      searchResults: [],
+      tacos: [],
+      taco: ''
     }
   }
 
@@ -17,17 +23,34 @@ class Search extends Component {
     try {
       const searchResponse = await fetch ("http://localhost:9000/tacos/search/" + this.state.restaurant, {
         method: 'GET',
-        headers: {
-          'Authorization': 'Bearer gr0amugCLWzgKkSCIgPZnPI8e7cRXFuEprIOGszYzUIo9JH5kWT1LMMZUkIW0tOBpywUrjmxns-zKDh5FoGsj4_SPNZG_-WDeGAzOCESd0wG9ZX5tUOXIRo4H2poW3Yx'
-        }
       }) 
       const parsedResponse = await searchResponse.json()
 
-      console.log(parsedResponse) 
-      // add data to state
+      console.log(parsedResponse.businesses, "this is parsedResponse.business")
+      this.setState({
+        searchResults: parsedResponse.businesses
+      })
 
     } catch (err) {
       console.log(err)
+    }
+  }
+
+  addTaco = async (taco, e) => {
+    e.preventDefault();
+    try {
+      const createTaco = await fetch('http://localhost:9000/tacos', { 
+        method: 'POST',
+        body: JSON.stringify(taco),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const parsedResponse = await createTaco.json(); 
+      this.setState({tacos: [...this.state.tacos, parsedResponse.data]})
+    } catch(err) {
+      console.log(err);
     }
   }
 
@@ -37,15 +60,30 @@ class Search extends Component {
     })
   }
 
-  render() {
-    // createa a variable of JSX by mapping over the data in state and render below 
 
+
+  render(){
+    console.log(this.state)
+    // createa a variable of JSX by mapping over the data in state and render below 
+      const restaurantList = this.state.searchResults.map((business, i) => {
+        console.log(business.name, "this is business.name")
+        return(
+          
+          <span>{restaurantList}</span>
+          
+        )
+      })
     return(
       <div>
-        
+          <div id="restSearch">
           <input onChange={this.handleChange} type="search" value={this.state.restaurant} placeholder="Restaurant Name" />
           <button onClick={this.handleSubmit}>Search</button>
-
+          </div>
+          
+            {restaurantList.name}
+            <div id="addTaco">
+          <CreateTaco addTaco={this.addTaco} />
+            </div>
         
       </div>
       )

@@ -3,6 +3,8 @@ import Tacos from '../Tacos';
 import CreateTaco from '../CreateTaco';
 import EditTaco from '../EditTaco';
 import {Route, Switch} from 'react-router-dom';
+import '../index.css'
+
 
 
 
@@ -164,30 +166,22 @@ class TacoContainer extends Component {
   render(){
     console.log(this.state)
     return(
+
+        
+      
+
       <div id="tacoContainer">
-        <CreateTaco addTaco={this.addTaco} />
+        
+
 
         <Tacos
           tacos={this.state.tacos}
-          deleteTaco={this.deleteTaco}
-          showModal={this.showModal}
           upVote={this.upVote}
           downVote={this.downVote}
         />
 
 
-        {
-          this.state.showEdit
-          ?
-          <EditTaco
-            handleFormChange={this.handleFormChange}
-            tacoToEdit={this.state.tacoToEdit}
-            closeAndEdit={this.closeAndEdit}
-          />
-          :
-          null
-        }
-        </div>
+      </div>
     )
   }
 }
