@@ -36,7 +36,7 @@ class TacoContainer extends Component {
 
 
   getTacos = async () => {
-    const tacos = await fetch('https://ctdb.herokuapp.com/tacos', {
+    const tacos = await fetch('https://pure-ocean-42676.herokuapp.com/tacos', {
       credentials: 'include',
       method: 'GET'
     });
@@ -49,7 +49,7 @@ class TacoContainer extends Component {
   addTaco = async (taco, e) => {
     e.preventDefault();
     try {
-      const createTaco = await fetch('https://ctdb.herokuapp.com/tacos', { 
+      const createTaco = await fetch('https://pure-ocean-42676.herokuapp.com/tacos', { 
         method: 'POST',
         body: JSON.stringify(taco),
         headers: {
@@ -69,7 +69,7 @@ class TacoContainer extends Component {
     e.preventDefault();
     console.log('deleteTaco function is being called, this is the id: ', id);
     try {
-      const deleteTaco = await fetch('https://ctdb.herokuapp.com/tacos' + id, {
+      const deleteTaco = await fetch('https://pure-ocean-42676.herokuapp.com/tacos' + id, {
         method: 'DELETE'
       });
       const parsedResponse = await deleteTaco.json();
@@ -98,7 +98,7 @@ class TacoContainer extends Component {
     const taco = taco._id //********************************//
     console.log('close and edit')
       try {
-        const editTaco = await fetch('https://ctdb.herokuapp.com/tacos' + this.state.editTacoId, {
+        const editTaco = await fetch('https://pure-ocean-42676.herokuapp.com/tacos' + this.state.editTacoId, {
           method: 'PUT',
           body: JSON.stringify(this.state.tacoToEdit),
           headers: {
@@ -136,7 +136,7 @@ class TacoContainer extends Component {
 
   upVote = async (taco, e) => {
     console.log("upvote has been clicked on " + taco._id)
-    const upVotedTaco = await fetch('https://ctdb.herokuapp.com/tacos/' + taco._id + '/upvote', { 
+    const upVotedTaco = await fetch('https://pure-ocean-42676.herokuapp.com/tacos/' + taco._id + '/upvote', { 
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -152,7 +152,7 @@ class TacoContainer extends Component {
 
   downVote = async (tacoId, e) => {
     console.log("downvote has been clicked on " + tacoId)
-    const downVotedTaco = await fetch('https://ctdb.herokuapp.com/tacos/' + tacoId + '/downvote', {
+    const downVotedTaco = await fetch('https://pure-ocean-42676.herokuapp.com/tacos/' + tacoId + '/downvote', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

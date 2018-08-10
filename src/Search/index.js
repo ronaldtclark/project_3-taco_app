@@ -21,7 +21,7 @@ class Search extends Component {
 
   handleSubmit = async () => {
     try {
-      const searchResponse = await fetch ("https://ctdb.herokuapp.com/tacos/search/" + this.state.restaurant, {
+      const searchResponse = await fetch ("https://pure-ocean-42676.herokuapp.com/tacos/search/" + this.state.restaurant, {
         method: 'GET',
       }) 
       const parsedResponse = await searchResponse.json()
@@ -39,7 +39,7 @@ class Search extends Component {
   addTaco = async (taco, e) => {
     e.preventDefault();
     try {
-      const createTaco = await fetch('https://ctdb.herokuapp.com/tacos', { 
+      const createTaco = await fetch('https://pure-ocean-42676.herokuapp.com/tacos', { 
         method: 'POST',
         body: JSON.stringify(taco),
         headers: {
