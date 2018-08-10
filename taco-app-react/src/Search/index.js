@@ -8,7 +8,6 @@ class Search extends Component {
     super()
     this.state = {
       restaurant: '',
-      rating: 0,
       searchResults: []
     }
   }

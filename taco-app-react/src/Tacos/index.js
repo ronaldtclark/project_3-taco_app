@@ -28,4 +28,3 @@ const Tacos = (props) => {
 
 export default Tacos;
 
-// <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
