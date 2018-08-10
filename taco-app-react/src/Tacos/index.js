@@ -1,4 +1,6 @@
 import React from 'react';
+import '../index.css'
+
 
 const Tacos = (props) => {
   console.log(props, " this is props in Tacos component")
@@ -10,8 +12,8 @@ const Tacos = (props) => {
         <div id="leaderboard">
           <li key={taco._id}>
             <span class="rating">{taco.rating}</span>
-            <span class="name"><a href='/{taco.id}'>{taco.name}</a></span>
-            <small class="restaurant">{taco.restaurant}</small>
+            <span class="name">{taco.name}</span>
+            <span class="restaurant">{taco.restaurant}</span>
             <button onClick={props.upVote.bind(null, taco)}>Upvote</button>
             <button onClick={props.downVote.bind(null, taco._id, i)}>Downvote</button>
           </li>

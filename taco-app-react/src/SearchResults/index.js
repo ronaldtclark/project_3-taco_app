@@ -1,17 +1,27 @@
 import React, {Component} from 'react'
-import Search from './Search'
+import Search from '../Search'
 
 
 class SearchResults extends Component {
   constructor() {
     super()
     this.state = {
-      searchResults: []
+
     }
   }
+
+  render() {
+  
+    return(
+      <ul>
+        <li><a href="#">{Search.restaurantList}</a></li>
+      </ul> 
+
+
+      )
+  }
+
 }
-
-
 
 
 

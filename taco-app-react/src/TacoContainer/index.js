@@ -3,6 +3,8 @@ import Tacos from '../Tacos';
 import CreateTaco from '../CreateTaco';
 import EditTaco from '../EditTaco';
 import {Route, Switch} from 'react-router-dom';
+import '../index.css'
+
 
 
 
@@ -181,7 +183,7 @@ class TacoContainer extends Component {
       
 
       <div id="tacoContainer">
-        <CreateTaco addTaco={this.addTaco} />
+        
 
 
         <Tacos
