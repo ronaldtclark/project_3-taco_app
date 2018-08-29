@@ -19,10 +19,11 @@ class Search extends Component {
   }
 
 
+
   handleSubmit = async () => {
     try {
-      const searchResponse = await fetch ("https://pure-ocean-42676.herokuapp.com/tacos/search/" + this.state.restaurant, {
-        method: 'GET',
+      const searchResponse = await fetch ('https://localhost:8000/tacos/search/' + this.state.restaurant, {
+        method: 'GET'
       }) 
       const parsedResponse = await searchResponse.json()
 
@@ -39,7 +40,7 @@ class Search extends Component {
   addTaco = async (taco, e) => {
     e.preventDefault();
     try {
-      const createTaco = await fetch('https://pure-ocean-42676.herokuapp.com/tacos', { 
+      const createTaco = await fetch('https://localhost:8000/tacos', { 
         method: 'POST',
         body: JSON.stringify(taco),
         headers: {
@@ -69,7 +70,7 @@ class Search extends Component {
         console.log(business.name, "this is business.name")
         return(
           
-          <span>{restaurantList}</span>
+          <h2>{restaurantList}</h2>
           
         )
       })
@@ -79,8 +80,11 @@ class Search extends Component {
           <input onChange={this.handleChange} type="search" value={this.state.restaurant} placeholder="Restaurant Name" />
           <button onClick={this.handleSubmit}>Search</button>
           </div>
-          
-            {restaurantList.name}
+
+          <ul>
+            {restaurantList}
+          </ul>
+
             <div id="addTaco">
           <CreateTaco addTaco={this.addTaco} />
             </div>

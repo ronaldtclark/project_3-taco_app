@@ -14,7 +14,7 @@ class Login extends Component{
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const loginResponse = await fetch('https://pure-ocean-42676.herokuapp.com/auth/login', {
+    const loginResponse = await fetch('https://localhost:8000/auth/login', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(this.state),

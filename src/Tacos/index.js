@@ -7,6 +7,7 @@ const Tacos = (props) => {
   // this is now your 
   
    const tacoList = props.tacos.map((taco, i) => {
+
     console.log()
       return (
         <div id="leaderboard">
