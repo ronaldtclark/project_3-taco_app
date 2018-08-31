@@ -1,19 +1,21 @@
 import React from 'react'
 import {Map, Marker} from 'google-maps-react'
+import Search from '../Search'
+import '../index.css'
 
-const EatHere = (props) => {
-  console.log(props, "this is EatHere props")
+const Location = (props) => {
+  console.log(props, "this is Location props")
   const style = {
-      width: '400px',
-      height: '400px'
+      width: '200px',
+      height: '200px',
     }
-  const eatHere = props.restaurants.map((restaurant, index) => {
-    const name = restaurant.name
-    const latitude = restaurant.coordinates.latitude
-    const longitude = business.coordinates.longitude
-    console.log(name, latitude, longitude)
+  const eatHere = (restaurant, index) => {
+    const name = 'Diamante Azul'
+    const latitude = this.props.latitude
+    const longitude = this.props.longitude
+    // console.log(name, latitude, longitude)
     return <Marker key={index} name={name} position={{lat: latitude, lng: longitude}}/>
-  })
+  }
   return (
     <Map google={props.google} style={style}>
       {eatHere}
@@ -21,4 +23,4 @@ const EatHere = (props) => {
     )
 }
 
-export default EatHere;
+export default Location;

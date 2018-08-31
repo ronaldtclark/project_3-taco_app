@@ -2,19 +2,20 @@ import React, {Component} from 'react'
 import Search from '../Search'
 import MapContainer from '../MapContainer'
 
-// SHOW INDIVIDUAL TACO AND MAP HERE
 
-// const ShowTaco = (props) => {
-//   return (
-//     <div>
-//       <div id="map">
-//         {MapContainer}
-//       </div>
-//       <h1>{taco.name}</h1>
-//       <h2>{restaurant.name}</h2>
-//       <h2>{restaurant.address}</h2>
-//     </div>
-//     )
-// }
 
-// export default ShowTaco;
+const ShowTaco = () => {
+  return (
+    <div>
+      
+      <h1>Taco de Asada</h1>
+      <h2>Diamante Azul</h2>
+      <h2>5661 N Clark St</h2>
+
+      <h3>Comments:</h3>
+      <p>Very tender steak! Get it with cheese!</p>
+    </div>
+    )
+}
+
+export default ShowTaco;

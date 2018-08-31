@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Tacos from '../Tacos';
 import CreateTaco from '../CreateTaco';
-import EditTaco from '../EditTaco';
 import {Route, Switch} from 'react-router-dom';
 import '../index.css'
 
@@ -14,12 +13,9 @@ class TacoContainer extends Component {
     this.state = {
       taco: '',
       tacos: [],
-      showEdit: false,
-      editTacoId: null,
-      tacoToEdit: {
-        name: '',
-        restaurant: ''
-      }
+      restaurant: '',
+      comments: []
+      
     }
   }
 
@@ -36,7 +32,7 @@ class TacoContainer extends Component {
 
 
   getTacos = async () => {
-    const tacos = await fetch('https://localhost:8000/tacos', {
+    const tacos = await fetch('http://localhost:8000/tacos', {
       credentials: 'include',
       method: 'GET'
     });
@@ -49,7 +45,7 @@ class TacoContainer extends Component {
   addTaco = async (taco, e) => {
     e.preventDefault();
     try {
-      const createTaco = await fetch('https://localhost:8000/tacos', { 
+      const createTaco = await fetch('http://localhost:8000/tacos', { 
         method: 'POST',
         body: JSON.stringify(taco),
         headers: {

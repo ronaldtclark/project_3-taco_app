@@ -11,9 +11,28 @@ class CreateTaco extends Component {
   }
   
   updateTaco = (e) => {
-    this.setState({[e.currentTarget.name]: e.currentTarget.value});
+    this.setState({
+      name: e.currentTarget.value
+    })
   }
 
+  addTaco = async (taco, e) => {
+    e.preventDefault();
+    try {
+      const createTaco = await fetch('http://localhost:8000/tacos', { 
+        method: 'POST',
+        body: JSON.stringify(taco),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const parsedResponse = await createTaco.json(); 
+      this.setState({tacos: [...this.state.tacos, parsedResponse.data]})
+    } catch(err) {
+      console.log(err);
+    }
+  }
   
   render(){
     return(
@@ -22,12 +41,6 @@ class CreateTaco extends Component {
           <label>
             Taco:
             <input type="text" name="name" onChange={this.updateTaco}/>
-          </label>
-        </span>
-        <span>
-          <label>
-            Restaurant:
-            <input type="text" name="restaurant" onChange={this.updateTaco}/>
           </label>
         </span>
           <input type='Submit'/>

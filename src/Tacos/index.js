@@ -8,7 +8,7 @@ const Tacos = (props) => {
   
    const tacoList = props.tacos.map((taco, i) => {
 
-    console.log()
+    
       return (
         <div id="leaderboard">
           <li key={taco._id}>

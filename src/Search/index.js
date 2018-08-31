@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
-import CreateTaco from '../CreateTaco'
 import TacoContainer from '../TacoContainer'
+import Restaurant from '../Restaurant'
+import Location from '../Location'
+import App from '../App'
 import '../index.css'
 
 
@@ -12,7 +14,7 @@ class Search extends Component {
     super()
     this.state = {
       restaurant: '',
-      searchResults: [],
+      restaurants: [],
       tacos: [],
       taco: ''
     }
@@ -22,38 +24,22 @@ class Search extends Component {
 
   handleSubmit = async () => {
     try {
-      const searchResponse = await fetch ('https://localhost:8000/tacos/search/' + this.state.restaurant, {
+      const searchResponse = await fetch ('http://localhost:8000/tacos/search/' + this.state.restaurant, {
         method: 'GET'
       }) 
       const parsedResponse = await searchResponse.json()
 
       console.log(parsedResponse.businesses, "this is parsedResponse.business")
       this.setState({
-        searchResults: parsedResponse.businesses
+        restaurants: parsedResponse.businesses
       })
-
+      console.log(this.state.restaurants)
     } catch (err) {
       console.log(err)
     }
   }
 
-  addTaco = async (taco, e) => {
-    e.preventDefault();
-    try {
-      const createTaco = await fetch('https://localhost:8000/tacos', { 
-        method: 'POST',
-        body: JSON.stringify(taco),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      const parsedResponse = await createTaco.json(); 
-      this.setState({tacos: [...this.state.tacos, parsedResponse.data]})
-    } catch(err) {
-      console.log(err);
-    }
-  }
+  
 
   handleChange = (e) => {
     this.setState({
@@ -61,34 +47,42 @@ class Search extends Component {
     })
   }
 
-
+  chooseOne = (e) => {
+    e.preventDefault()
+      let theOne = this.state.restaurants[0]
+      console.log(theOne, "this is the One")
+      // this.props.restaurantInfo(theOne)
+    // restFor Restaurant component -- 
+    // set in a f passed downfrom Appjs, currentRestaurant will live in App.js
+    // pass the entire restaurant iobject into the function
+    }
+  
 
   render(){
-    console.log(this.state)
+    console.log(this.state, " this is this.state in render() in Search")
     // createa a variable of JSX by mapping over the data in state and render below 
-      const restaurantList = this.state.searchResults.map((business, i) => {
-        console.log(business.name, "this is business.name")
+      const restaurantList = this.state.restaurants.map((business, i) => {
         return(
           
-          <h2>{restaurantList}</h2>
+          <li key={business.id} >{business.name}</li>
           
         )
       })
     return(
       <div>
+          
+          <h2>--Find Restaurant--</h2>
           <div id="restSearch">
           <input onChange={this.handleChange} type="search" value={this.state.restaurant} placeholder="Restaurant Name" />
           <button onClick={this.handleSubmit}>Search</button>
           </div>
 
           <ul>
-            {restaurantList}
+            <a href="http://localhost:3000/restaurant" onClick={this.chooseOne}>{restaurantList}</a>
           </ul>
 
-            <div id="addTaco">
-          <CreateTaco addTaco={this.addTaco} />
-            </div>
-        
+         
+                
       </div>
       )
   }

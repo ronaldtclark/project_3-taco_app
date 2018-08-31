@@ -20,6 +20,16 @@ body {
   justify-content: space-between;
 }
 
+#register {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
 span {
   padding: 0px 10px 0px 10px;
 }
@@ -62,6 +72,7 @@ span {
 li{
   display: flex;
   justify-content: space-evenly;
+  color: white;
 }
 
 ul {
@@ -97,6 +108,22 @@ h1 {
   font-size: 48px;
 }
 
+h2 {
+  margin: 20px 0px 20px 0px;
+  padding: 0;
+  font-family: 'Cabin Sketch', cursive;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+}
+
+#map {
+  justify-content: center;
+
+}
 
 ul {
   padding: 0;

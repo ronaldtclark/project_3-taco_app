@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './index.css';
 import TacoContainer from './TacoContainer';
 import Login from './Login';
+import Register from './Register';
 import {Route, Switch} from 'react-router-dom';
 import Header from './Header';
 import Search from './Search';
-import Tacos from './Tacos';
+// import Tacos from './Tacos';
+import MapContainer from './MapContainer';
 // import ShowTaco from './ShowTaco';
-import SearchResults from './SearchResults'
-// import Restaurant from './Restaurant'
+import Restaurant from './Restaurant'
 
 const My404 = () => {
   return (
@@ -23,6 +24,7 @@ class App extends Component {
     super()
     this.state = {
       restaurants: [],
+      theRestaurant: null,
       tacos:[],
       username: '',
       userId: '',
@@ -89,20 +91,49 @@ class App extends Component {
     }
   }
 
+  addTaco = async (taco, e) => {
+    e.preventDefault();
+    try {
+      const createTaco = await fetch('http://localhost:8000/tacos', { 
+        method: 'POST',
+        body: JSON.stringify(taco),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const parsedResponse = await createTaco.json(); 
+      this.setState({tacos: [...this.state.tacos, parsedResponse.data]})
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
+  restaurantInfo = (theOne) => {
+    this.setState({ theRestaurant: theOne })
+    console.log(this.state.theRestaurant, "this is theRestaurant in App")
+  }
+
   render() {  
     return (
       <main>
       <h1>CTDB: Chicago Taco Database</h1>
         <Header />
-    
+        
+
         <Switch>
-          <Route exact path='/' component={Login} />
+          <Route exact path='/auth/login' component={Login} />
+          <Route exact path='/auth/register' component={Register} />
           <Route exact path='/tacos' component={TacoContainer} />
-          <Route exact path='/tacos/:id' component={Tacos} />
-          <Route exact path='/restaurant' component={Search} />
+
+          <Route exact path='/search' component={Search} />
+          <Route exact path='/restaurant' component={Restaurant} />
           <Route component={My404} />
         </Switch>
         
+
+        
+      
       </main>
     );
   }
