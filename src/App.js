@@ -8,7 +8,7 @@ import Header from './Header';
 import Search from './Search';
 // import Tacos from './Tacos';
 import MapContainer from './MapContainer';
-// import ShowTaco from './ShowTaco';
+import ShowTaco from './ShowTaco';
 import Restaurant from './Restaurant'
 
 const My404 = () => {
@@ -125,7 +125,7 @@ class App extends Component {
           <Route exact path='/auth/login' component={Login} />
           <Route exact path='/auth/register' component={Register} />
           <Route exact path='/tacos' component={TacoContainer} />
-
+          <Route exact path='/tacos/taco' component={ShowTaco} />
           <Route exact path='/search' component={Search} />
           <Route exact path='/restaurant' component={Restaurant} />
           <Route component={My404} />

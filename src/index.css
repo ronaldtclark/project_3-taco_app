@@ -117,7 +117,33 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 32px;
+  font-size: 28px;
+}
+
+h3 {
+  margin: 20px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: 'Cabin Sketch', cursive;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+p {
+  margin: 0px 0px 100px 0px;
+  padding: 20px 0px 20px 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: 'Cabin Sketch', cursive;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 #map {
